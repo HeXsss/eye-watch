@@ -10,6 +10,8 @@ const handleExit = (event) => {
   $("#tracking").fadeOut(100, () => {
     const context = ctx.getContext("2d")
     context.clearRect(0, 0, ctx.width, ctx.height)
+    $("#tracking").css("left", "50%")
+    $("#tracking").css("top", "50%")
   })
 }
 document.addEventListener("mouseenter", (event) => {
