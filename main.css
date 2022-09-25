@@ -28,19 +28,18 @@ body {
 #eye > #ball {
   position: absolute;
   background: #000;
-  top: calc(50% - 15px);
-  left: 80%;
-  width: 30px;
-  height: 30px;
+  top: calc(50% - 25px);
+  left: 70%;
+  width: 50px;
+  height: 50px;
   border-radius: 100%;
-  box-shadow: 0 0 5px 1px #000;
 }
 #tracking {
   position: fixed;
   left: 0;
   top: 0;
   background: #36aaf9;
-  box-shadow: 0 0 10px 2px #36aaf9;
+  box-shadow: 0 0 50px 7px #36aaf9;
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -54,4 +53,16 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 100;
+}
+
+#math {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  color: #fff;
+  font-size: 20px;
+  font-weight: normal;
+  padding: 10px;
 }

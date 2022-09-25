@@ -1,10 +1,29 @@
 // Canvas
 const ctx = document.getElementById("ctx")
 // Handle entering mouse on screen and going out of app window
+const drawAxis = () => {
+  // Draw OX and OY
+  ctx.width = windowX
+  ctx.height = windowY
+  const ctxX = ctx.getContext("2d")
+  ctxX.beginPath()
+  ctxX.moveTo(0, eyeCenterY)
+  ctxX.lineTo(windowX, eyeCenterY)
+  ctxX.lineWidth = 1
+  ctxX.strokeStyle = "#aaa"
+  ctxX.stroke()
+  ctxX.beginPath()
+  ctxX.moveTo(eyeCenterX, 0)
+  ctxX.lineTo(eyeCenterX, windowY)
+  ctxX.lineWidth = 1
+  ctxX.strokeStyle = "#aaa"
+  ctxX.stroke()
+}
 const handleEnter = (event) => {
   $("#tracking").stop(event)
   $("#tracking").fadeIn(100)
   handleMove(event)
+  drawAxis()
 }
 const handleExit = (event) => {
   $("#tracking").stop()
@@ -39,6 +58,7 @@ const eyeWidth = $("#eye").width()
 const eyeHeight = $("#eye").height()
 const eyeCenterX = eyeX + eyeWidth / 2
 const eyeCenterY = eyeY + eyeHeight / 2
+$("#data-eye").text(`eye = [${eyeCenterX}, ${eyeCenterY}]`)
 const handleMove = (event) => {
   // Cursor update
   const mouseX = event.pageX
@@ -51,11 +71,16 @@ const handleMove = (event) => {
   const dx = mouseX - eyeCenterX
   const dy = mouseY - eyeCenterY
   const angle = (Math.atan2(dy, dx) * 180) / Math.PI
+  $("#data-a").text(`a = tan = ${Math.tan(angle).toFixed(2)}`)
+  $("#data-deg").text(`deg = ${angle.toFixed(2)}°`)
+  $("#data-cursor").text(`cursor = [${mouseX}, ${mouseY}]`)
   $("#eye").css("transform", `rotate(${angle}deg)`)
   // Drawing line in canvas
   ctx.width = windowX
   ctx.height = windowY
   const ctxX = ctx.getContext("2d")
+  drawAxis()
+  // Straight line
   ctxX.beginPath()
   ctxX.moveTo(eyeCenterX, eyeCenterY)
   ctxX.lineTo(mouseX, mouseY)
