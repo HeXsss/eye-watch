@@ -1,9 +1,10 @@
 // Canvas
 const ctx = document.getElementById("ctx")
 // Handle entering mouse on screen and going out of app window
-const handleEnter = () => {
+const handleEnter = (event) => {
   $("#tracking").stop(event)
   $("#tracking").fadeIn(100)
+  handleMove(event)
 }
 const handleExit = (event) => {
   $("#tracking").stop()
