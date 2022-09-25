@@ -1,16 +1,28 @@
 // Canvas
 const ctx = document.getElementById("ctx")
 // Handle entering mouse on screen and going out of app window
-$(document).on("mouseenter", () => {
-  $("#tracking").stop()
+const handleEnter = () => {
+  $("#tracking").stop(event)
   $("#tracking").fadeIn(100)
-})
-$(document).on("mouseleave", () => {
+}
+const handleExit = (event) => {
   $("#tracking").stop()
   $("#tracking").fadeOut(100, () => {
     const context = ctx.getContext("2d")
     context.clearRect(0, 0, ctx.width, ctx.height)
   })
+}
+document.addEventListener("mouseenter", (event) => {
+  handleEnter(event)
+})
+document.addEventListener("mouseleave", (event) => {
+  handleExit(event)
+})
+document.addEventListener("touchstart", (event) => {
+  handleEnter(event)
+})
+document.addEventListener("touchend", () => {
+  handleExit(event)
 })
 // Window
 const windowX = $(window).width()
