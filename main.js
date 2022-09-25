@@ -19,9 +19,11 @@ document.addEventListener("mouseleave", (event) => {
   handleExit(event)
 })
 document.addEventListener("touchstart", (event) => {
+  event.preventDefault()
   handleEnter(event)
 })
-document.addEventListener("touchend", () => {
+document.addEventListener("touchend", (event) => {
+  event.preventDefault()
   handleExit(event)
 })
 // Window
@@ -59,8 +61,10 @@ const handleMove = (event) => {
   ctxX.stroke()
 }
 document.addEventListener("touchmove", (event) => {
+  event.preventDefault()
   handleMove(event)
 })
 document.addEventListener("mousemove", (event) => {
+  event.preventDefault()
   handleMove(event)
 })
