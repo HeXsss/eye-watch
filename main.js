@@ -22,7 +22,7 @@ const eyeWidth = $("#eye").width()
 const eyeHeight = $("#eye").height()
 const eyeCenterX = eyeX + eyeWidth / 2
 const eyeCenterY = eyeY + eyeHeight / 2
-$(document).on("mousemove", (event) => {
+const handleMove = (event) => {
   // Cursor update
   const mouseX = event.pageX
   const mouseY = event.pageY
@@ -45,4 +45,10 @@ $(document).on("mousemove", (event) => {
   ctxX.lineWidth = 5
   ctxX.strokeStyle = "#36aaf9"
   ctxX.stroke()
+}
+document.addEventListener("touchmove", (event) => {
+  handleMove(event)
+})
+document.addEventListener("mousemove", (event) => {
+  handleMove(event)
 })
